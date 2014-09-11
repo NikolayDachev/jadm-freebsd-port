@@ -12,16 +12,17 @@ GH_TAGNAME= 1.0
 MAINTAINER= jadm@dachev.info
 COMMENT= FreeBSD jail framework with vnet, zfs and jail.conf support
 
-MAN8= jadm.8
-
 USE_PYTHON=yes
-USE_PYDISTUTILS=steuptools
+USE_PYDISTUTILS=yes
 
-DEPENDS= py-pip:${PORTSDIR}/devel/py-pip
+.if !exists(/usr/local/bin/pip)
+BUILD_DEPENDS= ${PORTSDIR}/devel/py-pip
+.endif
 
 post-install:
 	pip install tabulate
 	pip install ipaddress
 	pip install netifaces
+	pip install paramiko
 
 .include <bsd.port.mk>
