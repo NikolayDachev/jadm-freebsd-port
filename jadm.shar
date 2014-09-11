@@ -1,0 +1,69 @@
+# This is a shell archive.  Save it in a file, remove anything before
+# this line, and then unpack it by entering "sh file".  Note, it may
+# create directories; files and directories will be owned by you and
+# have default permissions.
+#
+# This archive contains:
+#
+#	jadm
+#	jadm/Makefile
+#	jadm/distinfo
+#	jadm/pkg-descr
+#	jadm/pkg-plist
+#
+echo c - jadm
+mkdir -p jadm > /dev/null 2>&1
+echo x - jadm/Makefile
+sed 's/^X//' >jadm/Makefile << 'a93a80bbbacbb4891325f681cb1ba107'
+X# $FreeBSD$
+X
+XPORTNAME= jadm
+XPORTVERSION= 1.0
+XCATEGORIES= sysutils
+X
+XMAINTAINER= jadm@dachev.info
+XCOMMENT= Jail framework with vnet, zfs and jail.conf support
+X
+XUSE_GITHUB= yes
+XGH_ACCOUNT= NikolayDachev
+XGH_COMMIT= 854e6fe
+XGH_TAGNAME= 1.0
+X
+XUSE_PYTHON=yes
+XUSE_PYDISTUTILS=yes
+X
+X.if ! exists(/usr/local/bin/pip)
+XBUILD_DEPENDS= py-pip:${PORTSDIR}/devel/py-pip
+X.endif
+X
+Xpre-install:
+X	${CP} ${WRKSRC}/man8/jadm.8 ${WRKDIR}/stage${PREFIX}/man/man8
+X
+Xpost-install:
+X# remove jadm.8 installed from setup.py
+X	${RM} ${PREFIX}/man/man8/jadm.8
+X
+X	pip install tabulate
+X	pip install ipaddress
+X	pip install netifaces
+X	pip install paramiko
+X
+X.include <bsd.port.mk>
+a93a80bbbacbb4891325f681cb1ba107
+echo x - jadm/distinfo
+sed 's/^X//' >jadm/distinfo << 'daf430aa89d0599fcf5c43aa8ede0d4b'
+XSHA256 (jadm-1.0.tar.gz) = 71d2933b5db9a313700938ee30d3015d04634624a34cb10673845dcae53379fc
+XSIZE (jadm-1.0.tar.gz) = 3261098
+daf430aa89d0599fcf5c43aa8ede0d4b
+echo x - jadm/pkg-descr
+sed 's/^X//' >jadm/pkg-descr << '226c8e2ecad53a6032bdb44ee46867e1'
+XJadm is python script which pars /etc/jail.conf in his own format.
+XUse zfs for jail home also bridge interface and epair interfaces for jail vnet.
+226c8e2ecad53a6032bdb44ee46867e1
+echo x - jadm/pkg-plist
+sed 's/^X//' >jadm/pkg-plist << '8cc1dcd87a88e4e0a88802d8227f426f'
+Xbin/jadm
+Xman/man8/jadm.8.gz
+8cc1dcd87a88e4e0a88802d8227f426f
+exit
+
