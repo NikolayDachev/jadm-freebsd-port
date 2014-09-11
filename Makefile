@@ -20,8 +20,8 @@ USE_PYDISTUTILS=steuptools
 DEPENDS= py-pip:${PORTSDIR}/devel/py-pip
 
 post-install:
- pip install tabulate
- pip install ipaddress
- pip install netifaces
+	pip install tabulate
+	pip install ipaddress
+	pip install netifaces
 
 .include <bsd.port.mk>
