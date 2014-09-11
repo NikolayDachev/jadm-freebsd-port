@@ -6,7 +6,7 @@ CATEGORIES= sysutils
 
 USE_GITHUB= yes
 GH_ACCOUNT= NikolayDachev
-GH_COMMIT= 05ded8d
+GH_COMMIT= 854e6fe
 GH_TAGNAME= 1.0
 
 MAINTAINER= jadm@dachev.info
@@ -14,6 +14,8 @@ COMMENT= FreeBSD jail framework with vnet, zfs and jail.conf support
 
 USE_PYTHON=yes
 USE_PYDISTUTILS=yes
+
+MAN8=          jadm.8
 
 .if ! exists(/usr/local/bin/pip)
 BUILD_DEPENDS= py-pip:${PORTSDIR}/devel/py-pip
