@@ -15,8 +15,8 @@ COMMENT= FreeBSD jail framework with vnet, zfs and jail.conf support
 USE_PYTHON=yes
 USE_PYDISTUTILS=yes
 
-.if !exists(/usr/local/bin/pip)
-BUILD_DEPENDS= ${PORTSDIR}/devel/py-pip
+.if ! exists(/usr/local/bin/pip)
+BUILD_DEPENDS= py-pip:${PORTSDIR}/devel/py-pip
 .endif
 
 post-install:
