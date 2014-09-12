@@ -13,6 +13,7 @@ GH_COMMIT= 2e23393
 GH_TAGNAME= 1.0
 
 USE_PYTHON=yes
+BUILD_DEPENDS=	${LOCALBASE}/bin/easy_install-${PYTHON_VER}:${PORTSDIR}/devel/py-setuptools
 
 pre-install:
 	${CP} ${WRKSRC}/man8/jadm.8 ${WRKDIR}/stage${PREFIX}/man/man8
