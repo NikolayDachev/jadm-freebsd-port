@@ -26,34 +26,28 @@ XCOMMENT= Jail framework with vnet, zfs and jail.conf support
 X
 XUSE_GITHUB= yes
 XGH_ACCOUNT= NikolayDachev
-XGH_COMMIT= 854e6fe
+XGH_COMMIT= 2e23393
 XGH_TAGNAME= 1.0
 X
 XUSE_PYTHON=yes
-XUSE_PYDISTUTILS=yes
-X
-X.if ! exists(/usr/local/bin/pip)
-XBUILD_DEPENDS= py-pip:${PORTSDIR}/devel/py-pip
-X.endif
+XBUILD_DEPENDS=	${LOCALBASE}/bin/easy_install-${PYTHON_VER}:${PORTSDIR}/devel/py-setuptools
 X
 Xpre-install:
+X# remove junk if exist
+X	${RM} ${PYTHON_LIBDIR}/site-packages/jadm*egg
 X	${CP} ${WRKSRC}/man8/jadm.8 ${WRKDIR}/stage${PREFIX}/man/man8
+X	${CP} ${WRKSRC}/jadm ${WRKDIR}/stage${PREFIX}/bin/
 X
 Xpost-install:
 X# remove jadm.8 installed from setup.py
 X	${RM} ${PREFIX}/man/man8/jadm.8
 X
-X	pip install tabulate
-X	pip install ipaddress
-X	pip install netifaces
-X	pip install paramiko
-X
 X.include <bsd.port.mk>
 a93a80bbbacbb4891325f681cb1ba107
 echo x - jadm/distinfo
 sed 's/^X//' >jadm/distinfo << 'daf430aa89d0599fcf5c43aa8ede0d4b'
-XSHA256 (jadm-1.0.tar.gz) = 71d2933b5db9a313700938ee30d3015d04634624a34cb10673845dcae53379fc
-XSIZE (jadm-1.0.tar.gz) = 3261098
+XSHA256 (jadm-1.0.tar.gz) = 60eb0337cb747901f3d4faf204988ec7748b62d362dfd5ee706a89b1630f8da3
+XSIZE (jadm-1.0.tar.gz) = 8814683
 daf430aa89d0599fcf5c43aa8ede0d4b
 echo x - jadm/pkg-descr
 sed 's/^X//' >jadm/pkg-descr << '226c8e2ecad53a6032bdb44ee46867e1'
