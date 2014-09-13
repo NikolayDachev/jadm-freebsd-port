@@ -16,6 +16,8 @@ USE_PYTHON=yes
 BUILD_DEPENDS=	${LOCALBASE}/bin/easy_install-${PYTHON_VER}:${PORTSDIR}/devel/py-setuptools
 
 pre-install:
+# remove junk if exist
+	${RM} ${PYTHON_LIBDIR}/site-packages/jadm*egg
 	${CP} ${WRKSRC}/man8/jadm.8 ${WRKDIR}/stage${PREFIX}/man/man8
 	${CP} ${WRKSRC}/jadm ${WRKDIR}/stage${PREFIX}/bin/
 
