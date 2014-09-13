@@ -13,11 +13,12 @@ GH_COMMIT= 2e23393
 GH_TAGNAME= 1.0
 
 USE_PYTHON=yes
-BUILD_DEPENDS=	${LOCALBASE}/bin/easy_install-${PYTHON_VER}:${PORTSDIR}/devel/py-setuptools
+USE_PYDISTUTILS=yes
+
+BUILD_DEPENDS=	${PYTHON_LIBDIR}/site-packages/paramiko/:${PORTSDIR}/security/py-paramiko \
+		${PYTHON_LIBDIR}/site-packages/netifaces.so:${PORTSDIR}/net/py-netifaces 
 
 pre-install:
-# remove junk if exist
-	${RM} ${PYTHON_LIBDIR}/site-packages/jadm*egg
 	${CP} ${WRKSRC}/man8/jadm.8 ${WRKDIR}/stage${PREFIX}/man/man8
 	${CP} ${WRKSRC}/jadm ${WRKDIR}/stage${PREFIX}/bin/
 
