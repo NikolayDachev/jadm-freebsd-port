@@ -1,4 +1,4 @@
- # $FreeBSD$
+# $FreeBSD$
 
 PORTNAME= jadm
 PORTVERSION= 1.0
