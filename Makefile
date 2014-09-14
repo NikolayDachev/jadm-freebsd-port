@@ -21,7 +21,6 @@ USE_PYTHON=     distutils autoplist
 
 pre-install:
 	${CP} ${WRKSRC}/man8/jadm.8 ${WRKDIR}/stage${PREFIX}/man/man8
-#	${CP} ${WRKSRC}/jadm ${WRKDIR}/stage${PREFIX}/bin/
 
 post-install:
 # remove jadm.8 installed from setup.py
