@@ -19,6 +19,12 @@ BUILD_DEPENDS=	${PYTHON_LIBDIR}/site-packages/paramiko/:${PORTSDIR}/security/py-
 USES=           python
 USE_PYTHON=     distutils autoplist
 
+.include <bsd.port.pre.mk>
+
+.if ${OSVERSION} < 901000
+IGNORE=		 freeBSD before 9.1 is not supported
+.endif
+
 pre-install:
 	${CP} ${WRKSRC}/man8/jadm.8 ${WRKDIR}/stage${PREFIX}/man/man8
 

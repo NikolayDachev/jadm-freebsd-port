@@ -36,9 +36,14 @@ X
 XUSES=           python
 XUSE_PYTHON=     distutils autoplist
 X
+X.include <bsd.port.pre.mk>
+X
+X.if ${OSVERSION} < 901000
+XIGNORE=		 freeBSD before 9.1 is not supported
+X.endif
+X
 Xpre-install:
 X	${CP} ${WRKSRC}/man8/jadm.8 ${WRKDIR}/stage${PREFIX}/man/man8
-X#	${CP} ${WRKSRC}/jadm ${WRKDIR}/stage${PREFIX}/bin/
 X
 Xpost-install:
 X# remove jadm.8 installed from setup.py
