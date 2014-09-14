@@ -2,25 +2,26 @@
 
 PORTNAME= jadm
 PORTVERSION= 1.0
-CATEGORIES= sysutils
+CATEGORIES= sysutils python
+MASTER_SITES=	CHEESESHOP
+PKGNAMEPREFIX=  ${PYTHON_PKGNAMEPREFIX}
 
-MAINTAINER= jadm@dachev.info
-COMMENT= Jail framework with vnet, zfs and jail.conf support
+MAINTAINER=	jadm@dachev.info
+COMMENT=	FreeBSD jail framework with zfs, vnet and jail.conf support
 
-USE_GITHUB= yes
-GH_ACCOUNT= NikolayDachev
-GH_COMMIT= 2e23393
-GH_TAGNAME= 1.0
-
-USE_PYTHON=yes
-USE_PYDISTUTILS=yes
+LICENSE=	BSD
 
 BUILD_DEPENDS=	${PYTHON_LIBDIR}/site-packages/paramiko/:${PORTSDIR}/security/py-paramiko \
-		${PYTHON_LIBDIR}/site-packages/netifaces.so:${PORTSDIR}/net/py-netifaces 
+		${PYTHON_LIBDIR}/site-packages/netifaces.so:${PORTSDIR}/net/py-netifaces \
+		${PYTHON_LIBDIR}/site-packages/tabulate.py:${PORTSDIR}/devel/py-tabulate \
+		${PYTHON_LIBDIR}/site-packages/ipaddress.py:${PORTSDIR}/net/py-ipaddress
+
+USES=           python
+USE_PYTHON=     distutils autoplist
 
 pre-install:
 	${CP} ${WRKSRC}/man8/jadm.8 ${WRKDIR}/stage${PREFIX}/man/man8
-	${CP} ${WRKSRC}/jadm ${WRKDIR}/stage${PREFIX}/bin/
+#	${CP} ${WRKSRC}/jadm ${WRKDIR}/stage${PREFIX}/bin/
 
 post-install:
 # remove jadm.8 installed from setup.py
